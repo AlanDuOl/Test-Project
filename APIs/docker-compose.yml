@@ -15,8 +15,11 @@ services:
 
 
   front:
+    container_name: front
     image: ${DOCKER_REGISTRY-}front
     build:
       context: ../
       dockerfile: front/Dockerfile
+    environment:
+      - NODE_ENV=development
 

@@ -1,8 +1,13 @@
-FROM node:12-alpine
-WORKDIR /app
-EXPOSE 80
-ENV NODE_ENV=development
+FROM node:12-alpine as builder
 COPY ./front/package*.json ./
-RUN npm install --development
+RUN npm install && mkdir /front && mv ./node_modules ./front
+WORKDIR /front
 COPY ./front/ ./
-CMD ["npm", "start"]
+RUN npm run build
+
+FROM nginx:1.16.0-alpine
+COPY --from=builder /front/build /usr/share/nginx/html
+RUN rm /etc/nginx/conf.d/default.conf
+COPY ./front/nginx.conf /etc/nginx/conf.d
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
