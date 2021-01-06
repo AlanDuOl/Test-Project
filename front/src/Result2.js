@@ -6,8 +6,8 @@ function Result2() {
     const [result, setResult] = useState({});
 
     useEffect(() => {
-        axios.get('api1/controller')
-            .then(res => console.log(res.json()))
+        axios.get('http://localhost:80/api_1/WeatherForecast')
+            .then(res => console.log(res.data))
             .catch(err => console.error(err));
     }, []);
 
