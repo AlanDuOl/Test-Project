@@ -12,13 +12,11 @@ services:
     build:
       context: .
       dockerfile: API_1/Dockerfile
-
+      
   front:
     container_name: front
     image: ${DOCKER_REGISTRY-}front
     build:
       context: ../
       dockerfile: front/Dockerfile
-    environment:
-      - NODE_ENV=development
 
