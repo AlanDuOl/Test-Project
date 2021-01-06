@@ -13,7 +13,6 @@ services:
       context: .
       dockerfile: API_1/Dockerfile
 
-
   front:
     container_name: front
     image: ${DOCKER_REGISTRY-}front
