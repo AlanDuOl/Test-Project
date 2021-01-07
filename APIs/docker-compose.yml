@@ -6,12 +6,16 @@ services:
     build:
       context: .
       dockerfile: API_2/Dockerfile
+    networks:
+        - test-project
 
   api_1:
     image: ${DOCKER_REGISTRY-}api1
     build:
       context: .
       dockerfile: API_1/Dockerfile
+    networks:
+    - test-project
       
   front:
     container_name: front
@@ -19,4 +23,11 @@ services:
     build:
       context: ../
       dockerfile: front/Dockerfile
+    networks:
+    - test-project
+
+
+networks:
+  test-project:
+    driver: bridge
 

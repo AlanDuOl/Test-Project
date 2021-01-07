@@ -6,8 +6,8 @@ function Result2() {
     const [result, setResult] = useState([]);
 
     let request = () => {
-        axios.get('http://localhost:3002/WeatherForecast')
-            .then(res => setResult(res.data))
+        axios.get('http://API_2:80/WeatherForecast')
+            .then(res => console.log(res.data))
             .catch(err => console.error(err));
     }
 
@@ -15,7 +15,7 @@ function Result2() {
         <div className="container">
             <p>Result2</p>
             <button type="button" onClick={request}>Request 2</button>
-            {result.map((val, index) => (
+            {/* {result.map((val, index) => (
                     <div key={index} className="info">
                         <div className="element">
                             <span>date</span>
@@ -31,7 +31,7 @@ function Result2() {
                         </div>
                     </div>
                 )
-            )}
+            )} */}
         </div>
     )
 }
