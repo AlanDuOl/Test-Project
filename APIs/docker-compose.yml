@@ -15,7 +15,7 @@ services:
       context: .
       dockerfile: API_1/Dockerfile
     networks:
-    - test-project
+        - test-project
       
   front:
     container_name: front
@@ -23,8 +23,12 @@ services:
     build:
       context: ../
       dockerfile: front/Dockerfile
+    ports:
+        - 80:80
+    environment:
+        NODE_ENV: production
     networks:
-    - test-project
+        - test-project
 
 
 networks:

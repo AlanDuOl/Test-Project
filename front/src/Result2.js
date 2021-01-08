@@ -5,8 +5,14 @@ function Result2() {
 
     const [result, setResult] = useState([]);
 
+    useEffect(() => {
+        axios.get('http://API_2')
+            .then(res => console.log(res.data))
+            .catch(err => console.error(err));
+    }, [])
+
     let request = () => {
-        axios.get('http://API_2:80/WeatherForecast')
+        axios.get('API_2')
             .then(res => console.log(res.data))
             .catch(err => console.error(err));
     }
