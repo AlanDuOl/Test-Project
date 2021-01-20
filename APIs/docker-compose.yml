@@ -1,34 +1,43 @@
 version: '3.4'
 
 services:
-  api_2:
-    image: ${DOCKER_REGISTRY-}api2
-    build:
-      context: .
-      dockerfile: API_2/Dockerfile
-    networks:
-        - test-project
+    api_2:
+        image: ${DOCKER_REGISTRY-}api2
+        build:
+            context: .
+            dockerfile: API_2/Dockerfile
+        networks:
+            - test-project
 
-  api_1:
-    image: ${DOCKER_REGISTRY-}api1
-    build:
-      context: .
-      dockerfile: API_1/Dockerfile
-    networks:
-        - test-project
+    api_1:
+        image: ${DOCKER_REGISTRY-}api1
+        build:
+            context: .
+            dockerfile: API_1/Dockerfile
+        networks:
+            - test-project
       
-  front:
-    container_name: front
-    image: ${DOCKER_REGISTRY-}front
-    build:
-      context: ../
-      dockerfile: front/Dockerfile
-    ports:
-        - 80:80
-    environment:
-        NODE_ENV: production
-    networks:
-        - test-project
+    front:
+        container_name: front
+        image: ${DOCKER_REGISTRY-}front
+        build:
+            context: ../
+            dockerfile: front/Dockerfile
+        environment:
+            NODE_ENV: production
+        networks:
+            - test-project
+
+    proxy:
+        container_name: proxy
+        image: ${DOCKER_REGISTRY-}proxy
+        build:
+            context: ../
+            dockerfile: proxy/Dockerfile
+        environment:
+            NODE_ENV: production
+        networks:
+            - test-project
 
 
 networks:

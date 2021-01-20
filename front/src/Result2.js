@@ -5,15 +5,15 @@ function Result2() {
 
     const [result, setResult] = useState([]);
 
-    useEffect(() => {
-        axios.get('http://API_2')
-            .then(res => console.log(res.data))
-            .catch(err => console.error(err));
-    }, [])
+    // useEffect(() => {
+    //     axios.get('api_2weatherforecast')
+    //         .then(res => console.log(res.data))
+    //         .catch(err => console.error(err));
+    // }, [])
 
     let request = () => {
-        axios.get('API_2')
-            .then(res => console.log(res.data))
+        axios.get('api_2weatherforecast')
+            .then(res => setResult(res.data))
             .catch(err => console.error(err));
     }
 
@@ -21,7 +21,7 @@ function Result2() {
         <div className="container">
             <p>Result2</p>
             <button type="button" onClick={request}>Request 2</button>
-            {/* {result.map((val, index) => (
+            {result.map((val, index) => (
                     <div key={index} className="info">
                         <div className="element">
                             <span>date</span>
@@ -35,9 +35,13 @@ function Result2() {
                             <span>TemperatureF</span>
                             <span>{val.temperatureF}</span>
                         </div>
+                        <div className="element">
+                            <span>Summary</span>
+                            <span>{val.summary}</span>
+                        </div>
                     </div>
                 )
-            )} */}
+            )}
         </div>
     )
 }

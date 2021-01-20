@@ -1,15 +1,27 @@
 version: '3.4'
 
 services:
+
+    proxy:
+        environment:
+          - NODE_ENV=Development
+        ports:
+          - "3000:80"
+
+    front:
+        environment:
+            - NODE_ENV=Development
+        ports:
+            - "80"
  
-  api_1:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "80"
+    api_1:
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        ports:
+            - "80"
       
-  api_2:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "80"
+    api_2:
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        ports:
+            - "80"
