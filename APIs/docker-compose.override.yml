@@ -6,16 +6,16 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - "3001:80"
+      - "80"
       
   api_2:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - "3002:80"
+      - "80"
  
   front:
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=Development
     ports:
       - "3000:80"

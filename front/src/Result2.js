@@ -6,7 +6,7 @@ function Result2() {
     const [result, setResult] = useState([]);
 
     let request = () => {
-        axios.get('http://API_2:80/WeatherForecast')
+        axios.get('api_2weatherforecast')
             .then(res => console.log(res.data))
             .catch(err => console.error(err));
     }
